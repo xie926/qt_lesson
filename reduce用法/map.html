@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var money = [10, 11, 12];
+    var mapMoney = money.map(item => {
+      return 10 * item
+    })
+    // map方法
+    console.log(mapMoney);
+    var newMoney = []
+    for(let n of money){
+      newMoney.push(n * 10)
+    }
+    // for foreach
+    var count = money.reduce((pre, next) => {
+      // [10, 11, 12]
+      // 1: 10 11 + = 21
+      // 2: 21 22 + = 33
+      // 3: 33
+      console.log(pre,next)
+      return pre + next;
+    })
+  </script>
+</body>
+</html>
