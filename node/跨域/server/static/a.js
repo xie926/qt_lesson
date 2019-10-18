@@ -1,0 +1,1 @@
+console.log('aaaaa.js   from static dir')
