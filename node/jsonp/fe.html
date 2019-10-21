@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- script -->
+  <!-- <script>
+    $.jsonp({
+      url:'',
+      success:
+    })
+  </script> -->
+  <script>
+    function getBook(data) {
+      console.log('data  ', data);
+    }
+  </script>
+  <!-- getBook({}, {}) 前端定义的回调 -->
+  <!-- script中src支持跨域请求，可以获得getBook([{book: "book1"}, {book: "book2"}]) -->
+  <script src="http://localhost:3002/api/books">
+    
+  </script>
+</body>
+</html>
