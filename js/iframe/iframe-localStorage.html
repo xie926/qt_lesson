@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>localStorage扩容</title>
+</head>
+<body>
+  <!-- 可引入另外域的内容 -->
+  <iframe src="http://localhost:3003/iframe.html" frameborder="0" id="iframe1"></iframe>
+  <script>
+      //大小限制5M，一个域名
+      // h5.u51.com/a/ 
+      // 假设localhost:8080不够了？  存在localhost:3003下面
+      // postMessage
+      window.onload = function () {
+        const iframe = document.getElementById('iframe1');
+        const iframeWindow = iframe.contentWindow;//指定的frame或者iframe所在的window对象
+        // iframeWindow.postMessage({name: 'hhhu'}, 'http://localhost:3003');//给目标iframe发送消息
+        function setAnotherOriginStorage(key, value) {
+          iframeWindow.postMessage({key: key, value: value}, 'http://localhost:3003');
+        }
+        function getAnotherOriginStorage(key, cb) {//get、set都是给目标域发消息，目标域通过onmessage获得消息
+          window.onmessage = function (e) {
+            console.log('get')
+            cb(null, e.data);
+          }
+          iframeWindow.postMessage({key}, 'http://localhost:3003');
+        }
+        setAnotherOriginStorage('key', {name: 'hu'})
+        getAnotherOriginStorage('key', (err, data) => {
+          console.log('data', data);
+        })
+        
+      }
+
+  </script>
+</body>
+</html>
