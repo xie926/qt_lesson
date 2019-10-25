@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <!-- 协议：//域名.com:port
+    http://www.baidu.com:80(默认80)
+    https://www.baidu.com:443(默认443)
+    3部分只要有一个不同就会产生跨域 -->
+  <!-- script -->
+  <script>
+  </script>
+  <script>
+  function getBook(data) {
+    console.log('data', data);
+  }
+  </script>
+  <!-- getBook([{}, {}]) -->
+  <!-- getBook([{"book":"book2"}]) -->
+  <script src="http://localhost:3002/api/books?callback=getBook"></script>
+  <!-- 封装一个 jsonP
+  jsonP({
+      url: 'html://localhost:3002/api/books',
+      callback : 'callback'
+  })
+  .then(res => {}) -->
+  <script>
+      function jsonP(option){
+          const { url,callback } = option
+          return new Promise((resolve,reject) => {
+              let methodName = 'abcdefg';
+              window[methodName] = function(data){
+                resolve(data);
+                delete window[methodName];
+                document.body.removeChild(scriptNode);
+              }
+              let scriptNode = document.createElement('script');
+              scriptNode.src = `${url}?${callback}=${methodName}`;
+              document.body.appendChild(scriptNode);
+              scriptNode.onerror = function(){
+                  reject('error')
+              }
+          })
+      }
+      jsonP({
+          url:'http://localhost:3002/api/books',
+          callback:'callback'
+      }).then(res=>{
+          console.log('----'+res)
+      })
+  </script>
+</body>
+</html>
