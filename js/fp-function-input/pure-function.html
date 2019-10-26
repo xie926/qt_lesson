@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 相同的输入会有相同的输出
+    // 不依赖任何外部环境
+    // 不会对外部造成影响
+    const add = (a,b) => a + b;
+    add(1,2);
+
+
+    let b = 20
+    const add1 = (a) => {
+      b=30;
+      return a + b
+    }
+    console.log(add1(123))
+    // Math.random()
+    // new Date()
+    // DOM
+    // I/O
+    // 纯函数的好处
+    // 易于测试  add(1,2); 测试=>是否等于3
+    // add(1,2);  // 3
+    // add(1,2);
+    // add(1,2);
+    // 结果缓存
+
+    let cache = new Map();
+    const memoryAdd = function(a, b){
+      // return  a + b;
+      // cache
+      const key = JSON.stringify(Array.from(arguments));
+      if(cache.has(key)) {
+        // console.log('这是缓存的结果')
+        return cache.get(key);
+      }
+      // console.log('这是自己执行')
+      let res = a + b;
+      cache.set(key, res);
+      return res;
+    }
+    console.log(memoryAdd(1, 2))
+    console.log(memoryAdd(1, 2))
+
+    const memorize = function(fn) {
+      let cache = new Map()
+      return function(...args){
+        let key = JSON.stringify(args)
+        if(cache.has(key)) {
+          // console.log('这是缓存的结果')
+          return cache.get(key);
+        }
+        // console.log('这是自己执行')
+        const res = fn(...args)
+        cache.set(key,res);
+        return res
+      }
+    }
+    const madd = memorize(add);
+    console.log(madd(1,2))
+    console.log(madd(1,2))
+  </script>
+</body>
+</html>
