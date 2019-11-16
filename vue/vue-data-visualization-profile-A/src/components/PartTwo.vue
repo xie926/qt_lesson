@@ -16,10 +16,8 @@ export default {
   },
   methods: {
     drawECharts() {
-
       // 基于准备好的dom，初始化echarts实例
       let myChart = this.$echarts.init(document.getElementById("part-two"));
-
       // 排行前五城市
       let myFirendCity = [
         { name: "广州", value: ["113.23", "23.16", "9"] },
@@ -28,7 +26,6 @@ export default {
         { name: "西安", value: ["108.95", "34.27", "4"] },
         { name: "北京", value: ["116.46", "39.92", "12"] },
       ];
-
       // 好友分布省份
       let myFriendProvince = [
         { name: "山东", value: 1 },
@@ -46,9 +43,9 @@ export default {
         { name: "江苏", value: 1 },
         { name: "河北", value: 3 },
         { name: "海南", value: 1 },
-        { name: "河南", value: 1 }
+        { name: "河南", value: 1 },
+        { name: "江西", value: 26 }
       ];
-
       myChart.setOption({
         // 标题
         title: {
@@ -183,3 +180,4 @@ export default {
   background: #18202d;
 }
 </style>
+© 2019 GitHub, Inc.

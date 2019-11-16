@@ -5,7 +5,6 @@
 <script>
 // 引入基本模板
 // let echarts = require("echarts/lib/echarts");
-
 export default {
   name: "partFour",
   data() {
@@ -18,7 +17,6 @@ export default {
     drawECharts() {
       // 基于准备好的dom，初始化echarts实例
       let myChart = this.$echarts.init(document.getElementById("part-four"));
-
       myChart.setOption({
         // 标题
         title: {

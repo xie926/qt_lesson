@@ -3,9 +3,7 @@
 </template>
 
 <script>
-
 // 引入基本模板
-
 export default {
   name: "partThree",
   data() {
@@ -18,7 +16,6 @@ export default {
     drawECharts() {
       // 基于准备好的dom，初始化echarts实例
       let myChart = this.$echarts.init(document.getElementById("part-three"));
-
       myChart.setOption({
         // 标题
         title: {
