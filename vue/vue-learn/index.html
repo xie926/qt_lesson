@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div :style="styles" width="500" height="500">hhh</div>
+        <input type="number" name="fontSizeNum" min="10" max="100" v-model="fontSizeNum">
+        <input type="range" name="red" min="1" max="256" v-model="red">
+        <input type="range" name="green" min="1" max="256" v-model="green">
+        <input type="range" name="blue" min="1" max="256" v-model="blue">
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                // date: new Date()
+                // styles: {
+                //     color: 'red',
+                //     fontSize: 14 + 'px'
+                // }
+                fontSizeNum: 30,
+                red: 20,
+                green: 200,
+                blue: 210
+            },
+            methods: {
+                date: function() {
+                    return Date.now()
+                }
+            },
+            computed: {
+                styles: function() {
+                    // this.red = Number(this.red).toString(16);
+                    // console.log(this.red)
+                    // this.green = Number(this.green).toString(16);
+                    // this.blue = Number(this.blue).toString(16);
+                    return {
+                        // color: `#${this.red}${this.green}${this.blue}`,
+                        color: `#${Number(this.red).toString(16)}${Number(this.green).toString(16)}${Number(this.blue).toString(16)}`,
+                        fontSize: this.fontSizeNum + 'px'
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

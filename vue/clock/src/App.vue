@@ -1,0 +1,67 @@
+<template>
+  <div id="app">
+    <Second :second="second"/>
+    <Minute/>
+    <Hour/>
+    <Apm/>
+    <Week/>
+    <Day/>
+    <Month/>
+    <!-- <img src="./assets/logo.png"> -->
+    <!-- <HelloWorld/> -->
+  </div>
+</template>
+
+<script>
+// import HelloWorld from './components/HelloWorld'
+// @ alias  短链接
+import Second from '@/components/Second.vue';
+import Minute from '@/components/Minute.vue';
+import Hour from '@/components/Hour.vue';
+import Apm from '@/components/Apm.vue';
+import Week from '@/components/Week.vue';
+import Day from '@/components/Day.vue';
+import Month from '@/components/Month.vue';
+
+export default {
+  name: 'App',
+  data(){
+    return {
+      second:''
+    }
+  },
+  components: {
+    // HelloWorld
+    Second,
+    Minute,
+    Hour,
+    Apm,
+    Week,
+    Day,
+    Month
+  },
+  methods:{
+    start(){
+      setInterval(()=>{
+        this.date  =new Date();
+        this.second = this.date.getSeconds();
+      },1000);
+    }
+  }
+  ,
+  created(){
+    this.start();
+  }
+}
+</script>
+
+<style>
+/* #app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+} */
+</style>
