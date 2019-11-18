@@ -2,7 +2,7 @@
   "name": "vue-mixin",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "xie926 <1187904163@qq.com>",
+  "author": "huwenkang <2670710153@qq.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
