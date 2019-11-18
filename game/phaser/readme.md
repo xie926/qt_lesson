@@ -11,3 +11,4 @@
     addEventListener 事件监听 I/O操作
     Input/Output CPU(运算和指令集) 内存，长期运行要从内存退出放到外部存储设备(例如硬盘) 典型的慢操作
     fs.readFile(path,'utf8',callback)
+（尝试解决问题）这个可以忽略
